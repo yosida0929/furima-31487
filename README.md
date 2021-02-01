@@ -5,6 +5,8 @@
 | user_id                 | integer             | null: false, foreign_key: true      |
 | item_id                 | integer             | null: false, foreign_key: true      |
 
+* has_one :user
+
 ## users table
 | Column                  | Type                | Options                 |
 |-------------------------|---------------------|-------------------------|
@@ -27,6 +29,7 @@
 | address          | string      | null: false                         | 
 | building_name    | string      |                                     |
 | phone_number     | string      | null: false                         |
+| buyer_id         | integer     | null: false, foreign_key: true      |
 
 ### Association
 * belongs_to :user
@@ -35,8 +38,8 @@
 
 | Column                   | Type                | Options                 |
 |------------------------  |---------------------|-------------------------|
-| name                     | text              | null: false                    |
-| price                    | text              | null: false                    |
+| name                     | string            | null: false                    |
+| price                    | integer           | null: false                    |
 | description              | text              | null: false                    |
 | shipping_cost_id         | integer           | null: false                    |
 | shipping_days_id         | integer           | null: false                    |
@@ -47,6 +50,6 @@
 | user_id                  | integer           |null: false, foreign_key: true  |
 
 ### Association
-* has_many :user
+* belongs_to :user
 * has_one :buyer
 * belongs_to_active_hash :prefecture :judgment :category :shipping :user
