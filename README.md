@@ -2,10 +2,12 @@
 ## buyers table
 | Column                  | Type                | Options                 |
 |-------------------------|---------------------|-------------------------|
-| user_id                 | integer             | null: false, foreign_key: true      |
-| item_id                 | integer             | null: false, foreign_key: true      |
+| user                    | references             | null: false, foreign_key: true      |
+| item                    | references             | null: false, foreign_key: true      |
 
-* has_one :user
+### Association
+* belongs_to :user
+* has_one :items
 
 ## users table
 | Column                  | Type                | Options                 |
@@ -18,6 +20,11 @@
 | name kana               | string              | null: false              |
 | encrypted_password      | string              | null: false              |
 | birth_day               | date                | null: false              |
+
+### Association
+* has_many :items
+* has_many :buyers
+* has_many :street_addresses
 
 ## street_addresses table
 
@@ -33,6 +40,7 @@
 
 ### Association
 * belongs_to :user
+* has_one :items
 
 ## items table
 
@@ -47,7 +55,7 @@
 | judgment_id              | integer           | null: false                    |
 | category_id              | integer           |null: false                     |
 | shipping_id              | integer           |null: false                     |
-| user_id                  | integer           |null: false, foreign_key: true  |
+| user                     | references        |null: false, foreign_key: true  |
 
 ### Association
 * belongs_to :user
