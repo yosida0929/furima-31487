@@ -1,22 +1,23 @@
 # DB 設計
-
-## orders table
-| Column             | Type                | Options                 |
-|--------------------|---------------------|-------------------------|
-| card_id            | integer     | null: false, foreign_key: true      |
-| expiration         | integer     | null: false, foreign_key: true      |
-| security           | integer     | null: false, foreign_key: true      |
+## buyers table
+| Column                  | Type                | Options                 |
+|-------------------------|---------------------|-------------------------|
+| user_id                 | integer             | null: false, foreign_key: true      |
+| item_id                 | integer             | null: false, foreign_key: true      |
 
 ## users table
 | Column                  | Type                | Options                 |
 |-------------------------|---------------------|-------------------------|
 | nickname                | string              | null: false             |
 | email                   | string              | unique: true            |
-| user_password           | string              | null: false             |
+| last name               | string              | null: false            |
+| name                    | string              | null: false            |
+| last name kana          | string              | null: false            |
+| name kana               | string              | null: false            |
 | encrypted_password暗号化 | string              | null: false             |
 | birth_day               | date                | null: false             |
 
-## street address住所 table
+## street address table
 
 | Column                         | Type       | Options           |
 |--------------------------------|------------|-------------------|
@@ -44,10 +45,10 @@
 | prefecture_id    県       | integer             | null: false                    |
 | judgment_id      判定     | integer             | null: false                    |
 | category_id      カテゴリー| integer             |null: false, foreign_key: true  |
-| brand_id         ブランド  | integer             |null: false, foreign_key: true  |
 | shipping_id      運送     | integer             |null: false, foreign_key: true  |
 | user_id                   | integer             |null: false, foreign_key: true  |
 
 ### Association
-
+* has_many :user
+* has_many :buyer
 * belongs_to_active_hash :prefecture
