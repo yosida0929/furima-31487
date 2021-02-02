@@ -14,17 +14,16 @@
 |-------------------------|---------------------|-------------------------|
 | nickname                | string              | null: false              |
 | email                   | string              | null: false ,unique: true|
-| last name               | string              | null: false              |
+| first_name               | string              | null: false              |
 | name                    | string              | null: false              |
-| last name kana          | string              | null: false              |
-| name kana               | string              | null: false              |
+| first_name_kana          | string              | null: false              |
+| name_kana               | string              | null: false              |
 | encrypted_password      | string              | null: false              |
 | birth_day               | date                | null: false              |
 
 ### Association
 * has_many :items
 * has_many :buyers
-* has_many :street_addresses
 
 ## street_addresses table
 
@@ -40,7 +39,7 @@
 
 ### Association
 * belongs_to :user
-* has_one :items
+* belongs_to :items
 
 ## items table
 
@@ -49,15 +48,13 @@
 | name                     | string            | null: false                    |
 | price                    | integer           | null: false                    |
 | description              | text              | null: false                    |
-| shipping_cost_id         | integer           | null: false                    |
-| shipping_days_id         | integer           | null: false                    |
-| prefecture_id            | integer           | null: false                    |
-| judgment_id              | integer           | null: false                    |
-| category_id              | integer           |null: false                     |
-| shipping_id              | integer           |null: false                     |
+| shipping_cost_id  配送負担       | integer           | null: false                    |
+| shipping_days_id  発送日数       | integer           | null: false                    |
+| prefecture_id     発送地域       | integer           | null: false                    |
+| category_id       カテゴリー     | integer          |null: false                     |
+| shipping_status_id 商品状態       | integer          |null: false                     |
 | user                     | references        |null: false, foreign_key: true  |
 
 ### Association
 * belongs_to :user
 * has_one :buyer
-* belongs_to_active_hash :prefecture :judgment :category :shipping :user
