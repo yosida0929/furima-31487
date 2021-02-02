@@ -8,7 +8,7 @@
 ### Association
 * belongs_to :user
 * belongs_to :item
-* has_one :street_address
+* has_one    :street_address
 
 ## users table
 | Column                  | Type                | Options                 |
@@ -26,7 +26,7 @@
 * has_many :items
 * has_many :buyers
 
-## street_address table
+## street_addresses table
 
 | Column                         | Type       | Options           |
 |--------------------------------|------------|-------------------|
@@ -36,10 +36,9 @@
 | address          | string      | null: false                         | 
 | building_name    | string      |                                     |
 | phone_number     | string      | null: false                         |
-| buyer_id         | references  | null: false, foreign_key: true      |
+| buyer            | references  | null: false, foreign_key: true      |
 
 ### Association
-* belongs_to :street_address
 * belongs_to :buyer
 
 ## items table
@@ -58,4 +57,4 @@
 
 ### Association
 * belongs_to :user
-* has_one :buyer
+* has_one    :buyer
