@@ -1,14 +1,4 @@
 # DB 設計
-## buyers table
-| Column                  | Type                | Options                 |
-|-------------------------|---------------------|-------------------------|
-| user                    | references          | null: false, foreign_key: true      |
-| item                    | references          | null: false, foreign_key: true      |
-
-### Association
-* belongs_to :user
-* belongs_to :item
-* has_one    :street_address
 
 ## users table
 | Column                  | Type                | Options                 |
@@ -25,21 +15,6 @@
 ### Association
 * has_many :items
 * has_many :buyers
-
-## street_addresses table
-
-| Column                         | Type       | Options           |
-|--------------------------------|------------|-------------------|
-| post_code        | string      | null: false                         |
-| prefecture_id    | integer     | null: false                         |
-| city             | string      | null: false                         |
-| address          | string      | null: false                         | 
-| building_name    | string      |                                     |
-| phone_number     | string      | null: false                         |
-| buyer            | references  | null: false, foreign_key: true      |
-
-### Association
-* belongs_to :buyer
 
 ## items table
 
@@ -58,3 +33,30 @@
 ### Association
 * belongs_to :user
 * has_one    :buyer
+
+## buyers table
+| Column                  | Type                | Options                 |
+|-------------------------|---------------------|-------------------------|
+| user                    | references          | null: false, foreign_key: true      |
+| item                    | references          | null: false, foreign_key: true      |
+
+### Association
+* belongs_to :user
+* belongs_to :item
+* has_one    :street_address
+
+
+## street_addresses table
+
+| Column                         | Type       | Options           |
+|--------------------------------|------------|-------------------|
+| post_code        | string      | null: false                         |
+| prefecture_id    | integer     | null: false                         |
+| city             | string      | null: false                         |
+| address          | string      | null: false                         | 
+| building_name    | string      |                                     |
+| phone_number     | string      | null: false                         |
+| buyer            | references  | null: false, foreign_key: true      |
+
+### Association
+* belongs_to :buyer
