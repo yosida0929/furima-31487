@@ -5,17 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   with_options presence: true do
-    validates :nickname,            presence: true
-    validates :first_name,          presence: true
-    validates :name,                presence: true
-    validates :first_name_kana,     presence: true
-    validates :name_kana,           presence: true
-    validates :birth_day,           presence: true
+    validates :nickname
+    validates :first_name,       format: {with: /\A[ぁ-んァ-ン一-龥々]/, message: "Full-width characters"}
+    validates :name,             format: {with: /\A[ぁ-んァ-ン一-龥々]/, message: "Full-width characters"}
+    validates :first_name_kana,  format: {with: /\A[ァ-ヶー－]+\z/, message: "Full-width katakana characters"}
+    validates :name_kana,        format: {with: /\A[ァ-ヶー－]+\z/, message: "Full-width katakana characters"}
+    validates :birth_day
   end
-      with_options presence: true, format: { with: /\A[a-z\d]+\z/i, message: '半角英数字を使用してください' } do
-        validates :password,          presence: true
-    end
-
-    has_many :items
-    has_many :buyers
+    validates :encrypted_password,:password,:password_confirmation,format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/}
 end
