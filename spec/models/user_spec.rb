@@ -68,27 +68,27 @@ RSpec.describe User, type: :model do
     end
     it "password２つが同じでないと登録できない" do
       @user.password = "1234567"
-      @user.password_confirmation = "1234567"
+      @user.password_confirmation = "yoshida"
       @user.valid?
       expect(@user.errors.full_messages).to include "Password is invalid", "Password confirmation is invalid"
     end
     it "first_nameが全角でないと登録できない" do
-      @user.first_name = FactoryBot.build(:user, first_name: "達矢")
+      @user.first_name = FactoryBot.build(:user, first_name: "yoshida")
       @user.valid?
       expect(@user.errors.full_messages).to include "First name Full-width characters"
     end
     it "nameが全角でないと登録できない" do
-      @user.name = FactoryBot.build(:user, name: "吉田")
+      @user.name = FactoryBot.build(:user, name: "yoshida")
       @user.valid?
       expect(@user.errors.full_messages).to include "Name Full-width characters"
     end
     it "first_name_kanaが全角カタカナでないと登録できない" do
-      @user.first_name_kana = FactoryBot.build(:user, first_name_kana: "タツヤ")
+      @user.first_name_kana = FactoryBot.build(:user, first_name_kana: "yoshida")
       @user.valid?
       expect(@user.errors.full_messages).to include "First name kana Full-width katakana characters"
     end
     it "name_kanaが全角カタカナでないと登録できない" do
-      @user.name_kana = FactoryBot.build(:user, name_kana: "ヨシダ")
+      @user.name_kana = FactoryBot.build(:user, name_kana: "yoshida")
       @user.valid?
       expect(@user.errors.full_messages).to include "Name kana Full-width katakana characters"
     end
