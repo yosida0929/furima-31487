@@ -13,4 +13,6 @@ class User < ApplicationRecord
     validates :birth_day
   end
     validates :password,:password_confirmation,format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/}
+
+    belongs_to :user
 end
