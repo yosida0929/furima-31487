@@ -28,32 +28,37 @@ RSpec.describe Item, type: :model do
     it "カテゴリーの情報が未入力だと登録できない" do
       @item.category_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include "Category Select"
+      expect(@item.errors.full_messages).to include "Category must be other than 0"
     end
 
     it "商品の状態が未入力だとと登録できない" do
       @item.shipping_status_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include "Shipping status Select"
+      expect(@item.errors.full_messages).to include "Shipping status must be other than 0"
     end
 
     it "配送料の情報が未入力だと登録できない" do
       @item.shipping_cost_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include "Shipping cost Select"
+      expect(@item.errors.full_messages).to include "Shipping cost must be other than 0"
     end
 
     it "発送元の地域情報が未入力だと登録できない" do
       @item.prefecture_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include "Prefecture Select"
+      expect(@item.errors.full_messages).to include "Prefecture must be other than 0"
     end
 
     it "発送までの日数が未入力だと登録できない" do
       @item.shipping_days_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include "Shipping days Select"
+      expect(@item.errors.full_messages).to include "Shipping days must be other than 0"
     end
     
+    it "商品の価格が空だとと登録できない" do
+      @item.price = nil
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Price can't be blank"
+    end
   end
 end
