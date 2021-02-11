@@ -6,14 +6,15 @@ class Item < ApplicationRecord
     validates :price, numericality: { only_integer: true, message: "Half-width number." }
     validates :description
     validates :image
+    
   end
 
   with_options numericality: { other_than: 0} do
-    validates :shipping_cost_id      
-    validates :shipping_days_id      
-    validates :prefecture_id         
-    validates :category_id           
-    validates :shipping_status_id    
+    validates :shipping_cost_id
+    validates :shipping_days_id
+    validates :prefecture_id
+    validates :category_id
+    validates :shipping_status_id
   end
 
   belongs_to :user
