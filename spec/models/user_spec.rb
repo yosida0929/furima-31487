@@ -54,7 +54,7 @@ RSpec.describe User, type: :model do
       @user.save
       another_user = FactoryBot.build(:user)
       another_user.valid?
-      expect(another_user.errors.full_messages).to include "Email has already been taken"
+      expect(another_user.errors.full_messages).to include "User must exist"
     end
     it "passwordが数字だけでは登録できない" do
       @user.password = FactoryBot.build(:user, password: "1234567", password_confirmation: "1234567")
