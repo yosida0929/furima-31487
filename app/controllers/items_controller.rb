@@ -3,7 +3,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all.order("id desc")
-    # @item_images = ItemImage.all.order("id desc")
   end
 
   def new
@@ -20,9 +19,9 @@ class ItemsController < ApplicationController
     end    
   end
 
-  def edit
-    @item = Item.find(params[:id])
-  end 
+  # def edit
+  #   # @item = Item.find(params[:id])
+  # end 
 
   def show
     @item = Item.find(params[:id])
