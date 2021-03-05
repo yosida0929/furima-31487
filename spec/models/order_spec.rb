@@ -28,7 +28,7 @@ RSpec.describe Order, type: :model do
       end
 
       it '郵便番号が-(ハイフン)が入ってないと登録できない' do
-        @order.post_code = "-"
+        @order.post_code = "1231234"
         @order.valid?
         expect(@order.errors.full_messages).to include "Post code is invalid. Include hyphen(-)"
       end

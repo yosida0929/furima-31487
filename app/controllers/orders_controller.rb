@@ -1,15 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:new, :create]
   before_action :set_order, only: [:index, :create]
+  before_action :move_to_top, only: [:index, :create]
 
   def index
-    @order = Order.new
-    if current_user == @item.user
-       redirect_to root_path
-    end
-  end
-
-  def new
     @order = Order.new
   end
 
@@ -25,6 +19,12 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def move_to_top
+    if current_user == @item.user
+      redirect_to root_path
+    end
+  end
 
   def set_order
     @item = Item.find(params[:item_id])
