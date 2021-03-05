@@ -8,6 +8,9 @@ class Order
     validates :address
     validates :phone_number, numericality: { only_integer: true, message: "Input only number"}
     validates :token
+    validates :user_id
+    validates :item_id
+    validates :phone_number, format: {with: /\A\d{10,11}\z/}
   end
   validates :prefecture_id, numericality: { other_than: 0, message: "Select" }
 
