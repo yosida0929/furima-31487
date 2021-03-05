@@ -45,10 +45,10 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include "Address can't be blank"
       end
 
-      it '電話番号が空では登録できない' do
-        @order.phone_number = nil
+      it '電話番号の数字以外が混じっていると登録できない' do
+        @order.phone_number = "アイウエオ"
         @order.valid?
-        expect(@order.errors.full_messages).to include "Phone number can't be blank"
+        expect(@order.errors.full_messages).to include "Phone number Input only number"
       end
 
       it '電話番号12桁以上では登録できない' do

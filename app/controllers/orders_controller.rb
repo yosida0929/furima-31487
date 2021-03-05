@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
   private
 
   def move_to_top
-    if current_user == @item.user
+    if current_user == @item.user || @item.buyer.present?
       redirect_to root_path
     end
   end
