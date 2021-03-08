@@ -12,7 +12,7 @@ class Order
     validates :item_id
     validates :phone_number, format: {with: /\A\d{10,11}\z/}
   end
-  validates :prefecture_id, numericality: { other_than: 0, message: "Select" }
+  validates :prefecture_id, numericality: { other_than: 1, message: "Select" }
 
   def save
     @buyer = Buyer.create(user_id: user_id, item_id: item_id)
