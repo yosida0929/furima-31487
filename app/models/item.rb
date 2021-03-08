@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     
   end
 
-  with_options numericality: { other_than: 0} do
+  with_options numericality: { other_than: 1} do
     validates :shipping_cost_id
     validates :shipping_days_id
     validates :prefecture_id
